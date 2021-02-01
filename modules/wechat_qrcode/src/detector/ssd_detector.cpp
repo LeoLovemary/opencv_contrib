@@ -26,7 +26,7 @@ vector<Mat> SSDDetector::forward(Mat img, const int target_width, const int targ
 
     auto prob = net_.forward("detection_output");
     vector<Mat> point_list;
-    // the shape is (1,1,100,7)=>(batch,channel,count,dim) 
+    // the shape is (1,1,100,7)=>(batch,channel,count,dim)
     for (int row = 0; row < prob.size[2]; row++) {
         const float* prob_score = prob.ptr<float>(0, 0, row);
         // prob_score[0] is not used.
